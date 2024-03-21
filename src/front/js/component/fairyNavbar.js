@@ -46,7 +46,7 @@ export const FairyNavbar = () => {
               <i className="fa-regular fa-user rounded"></i>
             </button>
             <ul className="fairyDropdown dropdown-menu text-secondary">
-              <li><Link to="/fairy/details" className="text-secondary dropdown-item btn">User Profile</Link></li>
+              <li><Link to="/fairy/profile" className="text-secondary dropdown-item btn">User Profile</Link></li>
               <li><button className="dropdown-item text-secondary" type="button">Account Details</button></li>
               <li><button className="dropdown-item text-secondary" type="button">Service History</button></li>
               <li><button className="dropdown-item text-secondary" type="button">Get Help</button></li>

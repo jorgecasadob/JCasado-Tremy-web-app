@@ -211,7 +211,6 @@ class Orders(db.Model):
     confirmed = db.Column(db.Boolean, default=False)
     client_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     fairy_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    # rating = db.Column(db.Enum(RatingEnum), nullable=False)
     
     fairy = db.relationship("User", foreign_keys=[fairy_id])
     client = db.relationship("User", foreign_keys=[client_id]) 
@@ -222,15 +221,24 @@ class Orders(db.Model):
         return f'<Orders {self.id}>'
     
     def serialize(self):
- 
+
+        fairy = User.query.get(self.fairy_id)
+        products = OrderProducts.query.filter_by(order_id=self.id).all()
+        print(products)
+        
+        products = list(map(lambda item: item.serialize(), products))
+
         return {
 
             "id": self.id,
             "price": self.price,
             "payment_confirmation": self.payment_confirmation,
             "confirmed": self.confirmed,
-            "client_id": self.client_id,
-            "fairy_id": self.fairy_id
+            "products": products,
+            "fairy": {
+                "name": fairy.name,
+                "surname": fairy.surname
+            }
         }
 
     def serialize_clients_and_products(self):
@@ -274,4 +282,3 @@ class Review(db.Model):
             "stars": self.stars,
             "comment": self.comment
         }
-

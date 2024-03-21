@@ -8,7 +8,7 @@ const UserCard = ({ order }) => {
 
     console.log(order)
 
-    
+
     const navigate = useNavigate();
 
     const handleSelect = () => {
@@ -19,7 +19,6 @@ const UserCard = ({ order }) => {
     return (
 
         <Card className="d-flex justify-content-center mt-4 mx-3" style={{ width: "18rem", borderColor: 'rgb(194, 237, 249)' }}>
-            {/* <Card.Img variant="top" src={order.avatar} /> */}
             <Card.Body>
                 <div className="d-flex justify-content-between">
                     <Card.Title>{order.client.name} {order.client.surname}</Card.Title>

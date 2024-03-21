@@ -102,10 +102,6 @@
 }
 
 
-/* FacialCare Promo1 */
-
-
-
 /* ClientNavbar */
 
 .userButton{
@@ -245,6 +241,23 @@
   font-size: 1.10rem;
   color: #3ebde0ff;
   font-weight: 600;
+}
+
+
+
+/* -------------------------------------------------------------------------------------------------*/
+/* Client Details */
+
+
+.client-data-card {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(204, 234, 245);
+  border-radius: 10px;
+  min-width: 300px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
 }
 
 
@@ -466,10 +479,10 @@
 /* -------------------------------------------------------------------------------------------------*/
 /* Fairy Details */
 
-.data-card {
+.fairy-data-card {
   display: flex;
   flex-direction: column;
-  background-color: #ffffffff;
+  background-color: #faf2fdff;
   border-radius: 10px;
   min-width: 300px;
   width: 60%;

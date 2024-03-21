@@ -8,13 +8,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			message: null,
 			token: JSON.parse(localStorage.getItem("token")) || null,
-			productlist: [],
 			user: [],
 			users: [],
+			profile: [],
 			services: [],
 			products: [],
+			appointments: [],
+			productlist: [],
 			filterProducts: [],
-
 		},
 
 
@@ -271,7 +272,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			// ---------------------------------------------------------------------------------------------------------------------------------------
-			// Client Orders / Select Client:
+			// Client Orders / Select Client / Fairy Appointment Cards:
+
 
 
 			getClients: async () => {
@@ -289,8 +291,98 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				const data = await response.json()
 
-				return data
+				return data;
 			},
+
+
+			getClientAppointments: async () => {
+
+				const store = getStore()
+
+				const response = await fetch(process.env.BACKEND_URL + "/api/client/requests",
+
+					{
+						headers: {
+
+							"Authorization": `Bearer ${store.token}`,
+						}
+					})
+
+				const data = await response.json()
+
+				console.log(data);
+
+				setStore({ appointments: data })
+
+				return data;
+
+			},
+
+
+			modifyOrder: async (order_id, bodyData) => {
+
+				try {
+					const store = getStore();
+
+					const response = await fetch(`${process.env.BACKEND_URL}/api/order/${order_id}`, {
+
+						method: 'PUT',
+						headers: {
+
+							'Content-Type': 'application/json',
+							'Authorization': `Bearer ${store.token}`
+						},
+
+						body: JSON.stringify(bodyData)
+					});
+
+					if (!response.ok) {
+
+						throw new Error("Network response was not ok");
+					}
+
+					const data = await response.json();
+
+					console.log('Success:', data);
+
+					return data;
+
+				} catch (error) {
+
+					console.error('Error:', error);
+					throw error;
+				}
+			},
+
+
+
+			// ---------------------------------------------------------------------------------------------------------------------------------------
+			// Client Appointment Cards:
+
+
+			getFairyAppointments: async () => {
+
+				const store = getStore()
+
+				const response = await fetch(process.env.BACKEND_URL + "/api/client/requests",
+
+					{
+						headers: {
+
+							"Authorization": `Bearer ${store.token}`,
+						}
+					})
+
+				const data = await response.json()
+
+				console.log(data);
+
+				setStore({ appointments: data })
+
+				return data;
+
+			},
+
 		}
 	}
 };

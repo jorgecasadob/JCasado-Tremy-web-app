@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from sqlalchemy.exc import IntegrityError
 from flask_cors import CORS
 import re
-import os
+import os, json
 import base64
 import requests
 
@@ -111,7 +111,7 @@ def validate_user():
 # -------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------
 # Services / Products:
-# ---------------
+
 
 
 @api.route("/add_product_to_user", methods=['POST'])
@@ -401,11 +401,11 @@ def createOrder():
 
 # -------------------------------------------------------------------------------------------------------------------------------------------------------
 # -------------------------------------------------------------------------------------------------------------------------------------------------------
-# Select Customer Order (Select Customer):
+# Visualize and select Customers Orders (Select Customer):
 
 
 
-@api.route("/client/requests")
+@api.route("/client/requests", methods=["GET"]) 
 @jwt_required()
 def client_requests():
 
@@ -414,11 +414,48 @@ def client_requests():
 
     if user is None:
         return {"message": "User not found"}, 401
-    
-    clients = Orders.query.filter_by(fairy_id=user.id).all()
-    clients = list(map(lambda item: item.serialize_clients_and_products(), clients))
+    print(user.role.value)
 
-    return jsonify(clients), 200
+    if user.role.value == "client":
+        requests = Orders.query.filter_by(client_id=user.id).all()
+        requests = list(map(lambda item: item.serialize(), requests))
+        
+    elif user.role.value == "fairy":
+        requests = Orders.query.filter_by(fairy_id=user.id).all()
+        requests = list(map(lambda item: item.serialize_clients_and_products(), requests))
+    
+    return jsonify(requests), 200
+
+
+
+@api.route("/order/<int:order_id>", methods=["PUT"])
+@jwt_required()
+def modify_order(order_id):
+
+    order = Orders.query.filter_by(id=order_id).first()
+    body = json.loads(request.data)
+
+    if order is None:
+
+        raise APIException("Order not found", status_code=404)
+
+    for key in body:
+
+        for col in order.serialize():
+
+            if key == col and key != "id":
+
+                setattr(order, col, body[key])
+    
+    db.session.commit()
+
+    response_body = {
+
+        "message": "Order selected succssfully",
+        "status": 200
+    }
+
+    return jsonify(response_body), 200
 
 
 
@@ -428,14 +465,22 @@ def client_requests():
 
 
 
-# @api.route("/client/profile")
-# @jwt_required()
-# def client_requests():
+@api.route("/client/profile", methods=["GET"])
+@jwt_required()
+def client_details():
 
-#     email = get_jwt_identity()
-#     user = User.query.filter_by(email=email).first()
+    email = get_jwt_identity()
+    user = User.query.filter_by(email=email).first()
 
-#     if user is None:
-#         return {"message": "User not found"}, 401
+    if user is None:
 
-#     return jsonify(user), 200
+        return jsonify({"message": "User not found"}), 401
+
+   
+    return jsonify({
+
+        "name": user.name,
+        "email": user.email,
+        "rating": user.rating
+
+    }), 200

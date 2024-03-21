@@ -13,6 +13,7 @@ import AuthorizatioLayaout from "./component/authorizationLayout";
 //------------------------------------------------------------------------------------------------------
 import ClientLayout from "./component/clientLayout";
 import ClientHome from "./pages/clientsPages/clientHome";
+import ClientProfile from "./pages/clientsPages/clientProfile";
 import ProductsMenuView from "./pages/clientsPages/productsMenuView";
 import FairySelection from "./pages/clientsPages/selectFairyView";
 import Payment from "./pages/clientsPages/payment"
@@ -22,7 +23,7 @@ import FairyLayout from "./component/fairyLayout";
 import FairyHome from "./pages/fairyPages/fairyHome";
 import FairyMenuView from "./pages/fairyPages/fairyMenuView";
 import ClientsRequest from "./pages/fairyPages/clientsRequest";
-// import FairyProfile from "./pages/fairyPages/fairyProfile"; 
+import FairyProfile from "./pages/fairyPages/fairyProfile";
 
 
 const Layout = () => {
@@ -48,6 +49,7 @@ const Layout = () => {
 
             <Route element={<ClientLayout />}>
               <Route element={<ClientHome />} path="/client/home" />
+              <Route element={<ClientProfile />} path="/client/profile" />
               <Route element={<ProductsMenuView />} path="/products/:categoryId" />
               <Route element={<FairySelection />} path="/select-fairy" />
               <Route element={<Payment />} path="/payment/:id" />
@@ -55,9 +57,10 @@ const Layout = () => {
 
             <Route element={<FairyLayout />}>
               <Route element={<FairyHome />} path="/fairy/home" />
+              <Route element={<FairyProfile />} path="/fairy/profile" />
               <Route element={<FairyMenuView />} path="/fairy/fairy-products/:categoryId" />
               <Route element={<ClientsRequest />} path="/client/request" />
-              {/* <Route element={<FairyProfile />} path="/fairy/profile" /> */}
+
             </Route>
 
             <Route element={<h1>Not found!</h1>} />
