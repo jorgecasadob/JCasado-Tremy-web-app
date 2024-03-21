@@ -4,7 +4,7 @@ import { Button, Container, Row, Col } from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
 import Promotions from "../../component/promotions";
-import ClientAppointmentCard from "../../component/clientAppointmentCard"; 
+import ClientAppointmentCard from "../../component/clientAppointmentCard";
 import facialPromo1 from "../../../img/facialPromo1.png";
 import img1Facial from "../../../img/1.png";
 import img2HairCut from "../../../img/2.png";
@@ -17,6 +17,16 @@ import img6Wax from "../../../img/6.png";
 const ClientHome = () => {
 
     const { store } = useContext(Context);
+
+    const isAuthenticated = !!store.token;
+
+    if (!isAuthenticated) {
+
+        navigate("/login");
+
+        return null;
+
+    }
 
     const [selectedService, setSelectedService] = useState(null);
 

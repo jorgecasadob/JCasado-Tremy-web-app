@@ -16,8 +16,17 @@ import avatar2 from "../../../img/ororoMunroe.png";
 
 const FairyHome = () => {
 
-
     const { store } = useContext(Context);
+
+    const isAuthenticated = !!store.token;
+
+    if (!isAuthenticated) {
+
+        navigate("/login");
+
+        return null;
+
+    }
 
     const [selectedService, setSelectedService] = useState(null);
 

@@ -1,7 +1,6 @@
 import React, { useEffect, useContext } from "react";
 import avatar from "../../img/barbaraGordon.png";
-import map from "../../img/map.png";
-import { Button, Container, Row, Col } from 'react-bootstrap';
+import { Button, Container, Col, ProgressBar } from 'react-bootstrap';
 import { Context } from "../store/appContext";
 
 
