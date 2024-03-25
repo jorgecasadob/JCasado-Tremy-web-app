@@ -21,15 +21,15 @@ const ClientProfile = () => {
                 <h2 className="d-flex justify-content-center fw-bold mb-3">
                     Client Profile
                 </h2>
-                <div className="data-card client-data-card container d-flex justify-content-between">
+                <div className="client-data-card container m-4">
 
-                        <p>Name: {store.user.name}</p>
-                        <p>Surname: {store.user.surname}</p>
-                        <p>Date of birth: {store.user.date_of_birth}</p>
-                        <p>Email: {store.user.email}</p>
-                        <p>Phone: {store.user.phone}</p>
-                        <p>Address: {store.user.address}</p>
-                        <p>Rating: {store.user.rating}</p>
+                        <p>Name: <span className="data-text-color">{store.user.name}</span></p>
+                        <p>Surname: <span className="data-text-color">{store.user.surname}</span></p>
+                        <p>Date of birth: <span className="data-text-color">{store.user.date_of_birth}</span></p>
+                        <p>Email: <span className="data-text-color">{store.user.email}</span></p>
+                        <p>Phone: <span className="data-text-color">{store.user.phone}</span></p>
+                        <p>Address: <span className="data-text-color">{store.user.address}</span></p>
+                        <p>Rating: <span className="data-text-color">{store.user.rating}</span></p>
 
                 </div>
             </>

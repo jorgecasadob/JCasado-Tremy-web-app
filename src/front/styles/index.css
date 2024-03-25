@@ -250,14 +250,19 @@
 
 
 .client-data-card {
-  display: flex;
-  flex-direction: column;
-  background-color: rgb(204, 234, 245);
+  padding-top: 10px;
+  padding-bottom: 1px;
+  background-color: #ebc5f6ff;
   border-radius: 10px;
   min-width: 300px;
   width: 60%;
-  display: flex;
-  justify-content: center;
+  font-weight: 550;
+  color: rgb(224, 62, 183);
+}
+
+.data-text-color {
+  font-weight: 550;
+  color: black;
 }
 
 
@@ -480,14 +485,13 @@
 /* Fairy Details */
 
 .fairy-data-card {
-  display: flex;
-  flex-direction: column;
-  background-color: #faf2fdff;
+  padding-top: 10px;
+  padding-bottom: 1px;
   border-radius: 10px;
   min-width: 300px;
-  width: 60%;
-  display: flex;
-  justify-content: center;
+  width: 50%;
+  font-weight: 550;
+  color: rgb(224, 62, 183);
 }
 
 

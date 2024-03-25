@@ -39,9 +39,9 @@ export const FairyAppointmentCard = () => {
                                 </p>
 
                                 <p className="productsAppointmentCard">
-                                    {appointment.client ? appointment.client.products : "No products found on this order"}
+                                    {appointment.client ? appointment.client.products : "No products found on this order" }
                                 </p>
-                                <p className="time-text d-flex align-items-center gap-1">
+                                <p className="productsAppointmentCard">
                                     {appointment.client ? appointment.client.address : "No address was found on this order"}
                                 </p>
                             </Col>
@@ -63,7 +63,7 @@ export const FairyAppointmentCard = () => {
                                 </div>
                             </Col>
                         </div>
-                        
+
                         {index == 0 &&
                             <div className="d-flex justify-content-center mt-4">
                                 <img className="mapImage " src={map} width={550} height={240} />
