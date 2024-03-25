@@ -22,7 +22,7 @@ const ClientHome = () => {
 
     if (!isAuthenticated) {
 
-        navigate("/login");
+        navigate("/");
 
         return null;
 
@@ -36,7 +36,7 @@ const ClientHome = () => {
         "manicure-&-pedicure": img5Nails,
         "lashes-&-eyebrows": img4Eyes,
         "hairdressing": img2HairCut,
-        "facial-treatments": img1Facial,
+        "facials": img1Facial,
         "makeup": img3Makeup,
         "waxing": img6Wax
     };

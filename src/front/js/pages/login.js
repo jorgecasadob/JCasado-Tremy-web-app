@@ -9,7 +9,7 @@ export const Login = () => {
 
   const { store, actions } = useContext(Context);
 
-  console.log(store.user.role);
+  console.log(store.user);
 
   const navigate = useNavigate();
 
