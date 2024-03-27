@@ -237,7 +237,8 @@ class Orders(db.Model):
             "products": products,
             "fairy": {
                 "name": fairy.name,
-                "surname": fairy.surname
+                "surname": fairy.surname,
+                "phone": fairy.phone
             }
         }
 

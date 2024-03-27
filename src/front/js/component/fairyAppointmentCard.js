@@ -48,7 +48,7 @@ export const FairyAppointmentCard = () => {
 
                             <Col md={3}>
                                 <div className="button gap-2 d-flex justify-content-end">
-                                    <Button variant="whatsapp" className="button_whatsapp">
+                                <Button href={`https://wa.me/${appointment.client && appointment.client?.phone}`} target="_blank" variant="whatsapp" className="button_whatsapp">
                                         <span> Chat </span>
                                         <svg version="1.0" xmlns="http://www.w3.org/2000/svg" width="25px" height="25px" viewBox="0 0 5000 5000" preserveAspectRatio="xMidYMid meet">
                                             <g id="layer101" fill="#000000" stroke="none"></g>

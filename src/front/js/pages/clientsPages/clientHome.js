@@ -18,19 +18,11 @@ const ClientHome = () => {
 
     const { store } = useContext(Context);
 
+    const navigate = useNavigate();
+
     const isAuthenticated = !!store.token;
 
-    if (!isAuthenticated) {
-
-        navigate("/");
-
-        return null;
-
-    }
-
     const [selectedService, setSelectedService] = useState(null);
-
-    const navigate = useNavigate();
 
     const serviceImages = {
         "manicure-&-pedicure": img5Nails,
@@ -47,6 +39,14 @@ const ClientHome = () => {
 
         navigate("/productsMenuView");
     };
+
+    useEffect(() => {
+
+        if (!store.token) {
+            
+            navigate("/");
+        }
+    }, [store.token, navigate])
 
     return (
 

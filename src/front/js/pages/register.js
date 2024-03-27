@@ -125,8 +125,18 @@ export const Register = () => {
           </div>
 
           <div className="mt-2">
-            <label htmlFor="phone" className="form-label">phone</label>
-            <input className="form-control" id="phone" type="number" name="phone" placeholder="Your phone number here" onChange={handleChange} />
+            <label htmlFor="countryCode" className="form-label">Country Code</label>
+            <select className="form-control" id="countryCode" name="countryCode" onChange={handleChange}>
+              <option value="+1">+1</option>
+              <option value="+44">+44</option>
+              <option value="+34">+34</option>
+              <option value="+57">+57</option>
+            </select>
+          </div>
+
+          <div className="mt-2">
+            <label htmlFor="phone" className="form-label">Phone</label>
+            <input className="form-control" id="phone" type="tel" name="phone" placeholder="Your phone number here" onChange={handleChange} />
           </div>
 
           <div className="mt-2">

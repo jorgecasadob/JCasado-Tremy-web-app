@@ -10,6 +10,16 @@ export const ClientNavbar = () => {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+
+    const response = actions.logOut()
+
+    if(response) {
+
+      navigate("/") 
+    }
+  }
+
   useEffect(() => {
 
     console.log("Navbar");
@@ -51,8 +61,8 @@ export const ClientNavbar = () => {
               <li><button className="dropdown-item text-secondary" type="button">Purchase History</button></li>
               <li><button className="dropdown-item text-secondary" type="button">Get Help</button></li>
               <li><p className="clientDropdownLine">________________________</p></li>
-              <li><Link to="/" className="dropdown-item btn">Log Out <i className="fa-solid fa-right-from-bracket"></i>
-              </Link></li>
+              <li><button onClick={() => handleLogout()} className="dropdown-item btn">Log Out <i className="fa-solid fa-right-from-bracket"></i>
+              </button></li>
             </ul>
           </div>
         </div>

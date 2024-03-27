@@ -72,12 +72,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				try {
 
 					setStore({ token: null });
+					localStorage.removeItem("token") 
 
 					console.log("You have been logged out");
+					return true;
 
 				} catch (error) {
 
 					console.error("Error closing session:", error);
+					return false;
 				}
 			},
 
