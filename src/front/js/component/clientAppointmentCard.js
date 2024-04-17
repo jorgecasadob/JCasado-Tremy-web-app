@@ -22,7 +22,7 @@ export const ClientAppointmentCard = () => {
 
             {store.appointments && store.appointments.length > 0 && store.appointments.map((appointment, index) => (
 
-                <div key={appointment.id} className="card mt-4" style={{ borderColor: 'rgb(194, 237, 249)' }}>
+                <div key={appointment.id} className="card mt-4" style={{ borderColor: 'rgb(242, 226, 247)' }}>
                     <div className="nextAppointment card-body">
                         <div className="d-flex align-items-center justify-content-center gap-3">
                             <img src={avatar} alt="User Avatar" className="avatar-img" />

@@ -18,6 +18,8 @@ const FairyHome = () => {
 
     const { store } = useContext(Context);
 
+    const navigate = useNavigate();
+
     const isAuthenticated = !!store.token;
 
     if (!isAuthenticated) {
@@ -29,8 +31,6 @@ const FairyHome = () => {
     }
 
     const [selectedService, setSelectedService] = useState(null);
-
-    const navigate = useNavigate();
 
     const serviceImages = {
         "manicure-&-pedicure": img5Nails,
@@ -48,6 +48,15 @@ const FairyHome = () => {
 
         navigate("/fairyMenuView");
     };
+
+    useEffect(() => {
+
+        if (!store.token) {
+
+            navigate("/");
+        }
+
+    }, [store.token, navigate])
 
     return (
 

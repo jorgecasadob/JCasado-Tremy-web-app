@@ -20,8 +20,6 @@ const ClientHome = () => {
 
     const navigate = useNavigate();
 
-    const isAuthenticated = !!store.token;
-
     const [selectedService, setSelectedService] = useState(null);
 
     const serviceImages = {
